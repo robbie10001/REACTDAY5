@@ -18,9 +18,6 @@ class App extends Component {
             <div>
                 <BrowserRouter>
                 <>
-                    <Link to="/">Home</Link>
-                    <Link to="/category">New Categories</Link>
-                    <Link to="/entry">Entries</Link>
 
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/category" render={(props) => {
