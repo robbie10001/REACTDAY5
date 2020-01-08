@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class CategorySelectionPage extends Component {
     render() {
-        const categories = ['personal', 'travel', 'dating'];
+        const { categories } = this.props;
 
         return(
             <>
@@ -20,6 +20,10 @@ class CategorySelectionPage extends Component {
             </>
         );
     }
+    static defaultProps = {
+        categories: []
+};
+
 }
 
 export default CategorySelectionPage;

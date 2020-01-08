@@ -5,11 +5,15 @@ import NewEntryPage from "./pages/NewEntryPage";
 import { BrowserRouter, Route, Link} from "react-router-dom";
 
 class App extends Component {
+    state= { categories: ['personal', 'travel', 'dating']};
+
+
 
 //<BrowserRouter> creates it own internal history. It sort of watches our address bar. 
 //<Route exact path="/category" component={CategorySelectionPage} /> When a route matches its path, it renders!
 //It is basically looking for a match.
     render() {
+        const { categories } = this.state; 
         return (
             <div>
                 <BrowserRouter>
@@ -17,8 +21,11 @@ class App extends Component {
                     <Link to="/">Home</Link>
                     <Link to="/category">New Categories</Link>
                     <Link to="/entry">Entries</Link>
+
                     <Route exact path="/" component={HomePage} />
-                    <Route exact path="/category" component={CategorySelectionPage} />
+                    <Route exact path="/category" render={(props) => {
+                        return < CategorySelectionPage {...props} categories={categories} />
+                    }} />
                     <Route exact path="/entry" component={NewEntryPage} />
                 </>
                </BrowserRouter>
