@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import EntryForm from "./../EntryForm";
 
 class NewEntryPage extends Component {
     state = { errorMessage: "", category: null }
@@ -17,6 +18,7 @@ class NewEntryPage extends Component {
     
     render() {
         const { errorMessage, category } = this.state;
+        const { onEntryFormSubmit, history } = this.props;
 
         return (
             <>
@@ -24,7 +26,7 @@ class NewEntryPage extends Component {
             { category && 
                 <>
                     <h1>New {category} entry</h1>
-                    
+                    <EntryForm onEntryFormSubmit={onEntryFormSubmit} category={category} history={history} />
                     <div>
                         <Link to="/category"><button>Back</button></Link>
                     </div>
