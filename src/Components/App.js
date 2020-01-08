@@ -11,7 +11,7 @@ class App extends Component {
         switch(location) {
             case "home":
                 return <HomePage />
-            case "categorySelectionPage":
+            case "categorySelection":
                 return <CategorySelectionPage />; 
             case "newEntry":
                 return <NewEntryPage />
@@ -19,9 +19,18 @@ class App extends Component {
                 return null;
         }
     }
+
+    changeLocation(location) {
+        this.setState({ location });
+    }
+
+
     render() {
         return (
             <div>
+                <button onClick={() => this.changeLocation("home")}>Home</button>
+                <button onClick={() => this.changeLocation("categorySelection")}>Category Selection</button>
+                <button onClick={() => this.changeLocation("newEntry")}>New Entry</button>
                {this.getPage()}
             </div>
         );
