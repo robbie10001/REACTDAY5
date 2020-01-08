@@ -2,36 +2,26 @@ import React, { Component } from "react";
 import CategorySelectionPage from "./pages/CategorySelectionPage";
 import HomePage from "./pages/HomePage";
 import NewEntryPage from "./pages/NewEntryPage";
+import { BrowserRouter, Route, Link} from "react-router-dom";
 
 class App extends Component {
-    state = { location:"home"}
 
-    getPage(){
-        const { location } = this.state;
-        switch(location) {
-            case "home":
-                return <HomePage />
-            case "categorySelection":
-                return <CategorySelectionPage />; 
-            case "newEntry":
-                return <NewEntryPage />
-            default:
-                return null;
-        }
-    }
-
-    changeLocation(location) {
-        this.setState({ location });
-    }
-
-
+//<BrowserRouter> creates it own internal history. It sort of watches our address bar. 
+//<Route exact path="/category" component={CategorySelectionPage} /> When a route matches its path, it renders!
+//It is basically looking for a match.
     render() {
         return (
             <div>
-                <button onClick={() => this.changeLocation("home")}>Home</button>
-                <button onClick={() => this.changeLocation("categorySelection")}>Category Selection</button>
-                <button onClick={() => this.changeLocation("newEntry")}>New Entry</button>
-               {this.getPage()}
+                <BrowserRouter>
+                <>
+                    <Link to="/">Home</Link>
+                    <Link to="/category">New Categories</Link>
+                    <Link to="/entry">Entries</Link>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/category" component={CategorySelectionPage} />
+                    <Route exact path="/entry" component={NewEntryPage} />
+                </>
+               </BrowserRouter>
             </div>
         );
     }
