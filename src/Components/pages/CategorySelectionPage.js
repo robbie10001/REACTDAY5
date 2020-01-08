@@ -12,7 +12,7 @@ class CategorySelectionPage extends Component {
                     {categories.map((category, index) => {
                         return (
                             <li key={category}>
-                                <Link to='/entry'>{category}</Link>
+                                <Link to={`/entry/new/${index}`}>{category}</Link>
                             </li>
                         )
                     })}
